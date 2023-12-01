@@ -52,6 +52,7 @@ const clases = [
     "https://static.videezy.com/system/resources/previews/000/033/826/original/pattaya-aerial-view30.mp4",
     "https://static.videezy.com/system/resources/previews/000/034/644/original/Boy_plane8.mp4",
 ];
+
 const $clasesContainer = document.getElementById('clasesContainer');
 const $btnAtras = document.getElementById('btnAtras');
 const $btnSiguiente = document.getElementById('btnSiguiente');
