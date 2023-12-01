@@ -46,60 +46,6 @@ const clases = [
     "https:zoom-fepp.s3.amazonaws.com/98808465138/98808465138.mp4"
 ]
 
-// const $clasesContainer = document.getElementById('clasesContainer');
-// const $btnAtras = document.getElementById('btnAtras');
-// const $btnSiguiente = document.getElementById('btnSiguiente');
-// let $numeroPagina = document.getElementById('numeroPagina');
-
-// let video;
-
-
-// // Funciones
-// const aumentarNumeroPagina = () => {
-//     return $numeroPagina.innerText = parseInt($numeroPagina.innerText) + 1;
-// }
-// const disminuirNumeroPagina = () => {
-//     return $numeroPagina.innerText = parseInt($numeroPagina.innerText) + -1;
-// }
-// const obtenerVideoAMostrar = (array) => {
-//     return video = array[parseInt($numeroPagina.innerText)]
-// }
-// obtenerVideoAMostrar(clases)
-
-
-
-// // Asignar funciones
-// $btnSiguiente.addEventListener('click',()=> {
-//     if ($numeroPagina.innerText < clases.length){
-//         aumentarNumeroPagina();
-//         obtenerVideoAMostrar(clases);
-//         mostrarContenido();
-//     }
-// })
-// $btnAtras.addEventListener('click',()=>{
-//     if($numeroPagina.innerText > '0' || $numeroPagina.innerText > 0){
-//         disminuirNumeroPagina();
-//         obtenerVideoAMostrar(clases);
-//     mostrarContenido();
-//     }
-// })
-
-// // MONTAR HTML
-// const mostrarContenido = () => {
-//         $clasesContainer.innerHTML = `
-//             <div class="videoContainer">
-//                 <video class='video' controls key={clase}>
-//                     <source src="${video}" type="video/mp4" />
-//                 </video>
-//                 <a href="${video}" class="textoVideo" target="_blank">${video}</a>
-//             </div>
-//         `
-// }
-// mostrarContenido();
-
-
-
-
 const $clasesContainer = document.getElementById('clasesContainer');
 const $btnAtras = document.getElementById('btnAtras');
 const $btnSiguiente = document.getElementById('btnSiguiente');
@@ -107,54 +53,46 @@ let $numeroPagina = document.getElementById('numeroPagina');
 
 let video;
 
+
 // Funciones
 const aumentarNumeroPagina = () => {
     return $numeroPagina.innerText = parseInt($numeroPagina.innerText) + 1;
-};
-
+}
 const disminuirNumeroPagina = () => {
-    return $numeroPagina.innerText = parseInt($numeroPagina.innerText) - 1;
-};
+    return $numeroPagina.innerText = parseInt($numeroPagina.innerText) + -1;
+}
+const obtenerVideoAMostrar = (array) => {
+    return video = array[parseInt($numeroPagina.innerText)]
+}
+obtenerVideoAMostrar(clases)
 
-const obtenerVideoAMostrar = async (array) => {
-    // Simula una operación asíncrona, por ejemplo, una solicitud HTTP.
-    return new Promise(resolve => {
-        video = array[parseInt($numeroPagina.innerText)];
-        resolve();
-    });
-};
+
 
 // Asignar funciones
-$btnSiguiente.addEventListener('click', async () => {
-    if ($numeroPagina.innerText < clases.length) {
+$btnSiguiente.addEventListener('click',()=> {
+    if ($numeroPagina.innerText < clases.length){
         aumentarNumeroPagina();
-        await obtenerVideoAMostrar(clases);
+        obtenerVideoAMostrar(clases);
         mostrarContenido();
     }
-});
-
-$btnAtras.addEventListener('click', async () => {
-    if ($numeroPagina.innerText > '0' || $numeroPagina.innerText > 0) {
+})
+$btnAtras.addEventListener('click',()=>{
+    if($numeroPagina.innerText > '0' || $numeroPagina.innerText > 0){
         disminuirNumeroPagina();
-        await obtenerVideoAMostrar(clases);
-        mostrarContenido();
+        obtenerVideoAMostrar(clases);
+    mostrarContenido();
     }
-});
+})
 
 // MONTAR HTML
 const mostrarContenido = () => {
-    $clasesContainer.innerHTML = `
-        <div class="videoContainer">
-            <video class='video' controls key={clase}>
-                <source src="${video}" type="video/mp4" />
-            </video>
-            <a href="${video}" class="textoVideo" target="_blank">${video}</a>
-        </div>
-    `;
-};
-
-// Llamada inicial asíncrona para cargar el primer video
-(async () => {
-    await obtenerVideoAMostrar(clases);
-    mostrarContenido();
-})();
+        $clasesContainer.innerHTML = `
+            <div class="videoContainer">
+                <video class='video' controls key={clase}>
+                    <source src="${video}" type="video/mp4" />
+                </video>
+                <a href="${video}" class="textoVideo" target="_blank">${video}</a>
+            </div>
+        `
+}
+mostrarContenido();
