@@ -68,7 +68,9 @@ const responsePromises = async()=>{
     try{
         const resolve = await Promises();
         return(resolve)
-    }catch(err){}
+    }catch(err){
+        console.log(`Error al cargar video: ${err.message}`);
+    }
 }
 responsePromises();
 
