@@ -34,10 +34,24 @@ body{
 .controladorPagina .atras{
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    background-color: beige;
+    user-select: none;
+}
+.controladorPagina .atras:hover{
+    cursor: pointer;
 }
 .controladorPagina .siguiente{
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    background-color: beige;
+    user-select: none;
+}
+.controladorPagina .siguiente:hover{
+    cursor: pointer;
+}
+.controladorPagina .numeroPagina{
+    color: green;
+    background-color: rgb(126, 126, 0);
 }
 .clasesContainer{
     display: flex;
@@ -56,6 +70,9 @@ body{
 }
 .video{
     width: 90%;
+}
+.video:hover{
+    cursor: pointer;
 }
 
 .textoVideo{

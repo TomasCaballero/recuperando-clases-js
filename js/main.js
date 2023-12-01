@@ -52,38 +52,54 @@ const $btnAtras = document.getElementById('btnAtras');
 const $btnSiguiente = document.getElementById('btnSiguiente');
 const $numeroPagina = document.getElementById('numeroPagina');
 
-const urlFija = 'https:zoom-fepp.s3.amazonaws.com/98808465138/98808465138'
 
-let video = urlFija+"-meeting-06c96ac1-267e-410d-8862-cdf088770125.mp4"
+
+const urlFija = 'https:zoom-fepp.s3.amazonaws.com/98808465138/98808465138';
+let video = urlFija + "-meeting-06c96ac1-267e-410d-8862-cdf088770125.mp4";
+
+const Promises = async()=> {
+    return new Promise((resolve, reject) => {
+        resolve(
+            video = urlFija+clases[$numeroPagina.innerText]
+        );
+    })
+}
+const responsePromises = async()=>{
+    try{
+        const resolve = await Promises();
+        return(resolve)
+    }catch(err){}
+}
+responsePromises();
+
 
 const aumentarNumeroPagina = () => {
     $numeroPagina.innerText = parseInt($numeroPagina.innerText) + 1;
 }
 const disminuirNumeroPagina = () => {
-    $numeroPagina.innerText -= 1
-}
-const buscarVideo = () => {
-    video = urlFija+clases[$numeroPagina.innerText];
+    $numeroPagina.innerText -= 1;
 }
 
-
-buscarVideo();
+// const buscarVideo = () => {
+//     video = urlFija+clases[$numeroPagina.innerText];
+// }
+// buscarVideo();
 
 
 
 $btnSiguiente.addEventListener('click', () =>{
-    // if($numeroPagina < clases.length){
+    if($numeroPagina.innerText < clases.length){
         aumentarNumeroPagina();
-        buscarVideo();
+        responsePromises();
         renderVideos();
-    // }
+    }
 })
 
 
 $btnAtras.addEventListener('click', () =>{
     if ($numeroPagina.innerText > 1){
         disminuirNumeroPagina();
-        buscarVideo();
+        responsePromises();
         renderVideos();
     }
 })
@@ -91,13 +107,13 @@ $btnAtras.addEventListener('click', () =>{
 
 const renderVideos = () => {
     $clasesContainer.innerHTML = `
-    <div class="videoContainer">
-        <video class='video' controls key={clase}>
-            <source src="${video}" type="video/mp4" />
-        </video>
-        <a href="${video}" class="textoVideo" target="_blank">${video}</a>
-    </div>
-`
+        <div class="videoContainer">
+            <video class='video' controls key={clase}>
+                <source src="${video}" type="video/mp4" />
+            </video>
+            <a href="${video}" class="textoVideo" target="_blank">${video}</a>
+        </div>
+    `
 }
 
 renderVideos();
